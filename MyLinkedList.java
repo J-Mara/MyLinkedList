@@ -32,9 +32,21 @@ public class MyLinkedList{
        counter = counter.getNext();
      }
   }
-  return "There is no value at that index";
+  return "throw here jordan";
 }
-}
-//  public String set(int index, String value);
+ public String set(int index, String value){
+   Node counter = start;
+   for(int i = 0; i < size; i++){
+     if(i == index){
+       String holder = counter.getData();
+       counter.setData(value);
+       return holder;
+     }else{
+       counter = counter.getNext();
+     }
+   }
+   return"throw here jordan";
+ }
 //  public String toString();
 //  //Any helper method that returns a Node object MUST BE PRIVATE!
+}
