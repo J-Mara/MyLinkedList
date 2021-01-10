@@ -47,6 +47,19 @@ public class MyLinkedList{
    }
    return"throw here jordan";
  }
-//  public String toString();
+ public String toString(){
+   String result = "";
+   Node counter = start;
+   for(int i = 0; i < size; i++){
+     if(counter != end){
+       result += counter.getData() + ", ";
+       counter = counter.getNext();
+     }
+     else{
+       result += counter.getData();
+     }
+   }
+   return result;
+ }
 //  //Any helper method that returns a Node object MUST BE PRIVATE!
 }
