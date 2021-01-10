@@ -89,7 +89,7 @@ public void add(int index, String value){
    return"throw here jordan";
  }
  public String toString(){
-   String result = "";
+   String result = "[";
    Node counter = start;
    for(int i = 0; i < size; i++){
      if(counter != end){
@@ -97,13 +97,13 @@ public void add(int index, String value){
        counter = counter.getNext();
      }
      else{
-       result += counter.getData();
+       result += counter.getData() + "]";
      }
    }
    return result;
  }
    public String toStringReversed(){
-     String result = "";
+     String result = "[";
      Node counter = end;
      for(int i = size-1; i >= 0; i--){
        if(counter != start){
@@ -111,7 +111,7 @@ public void add(int index, String value){
          counter = counter.getPrev();
        }
        else{
-         result += counter.getData();
+         result += counter.getData() + "]";
        }
      }
      return result;
