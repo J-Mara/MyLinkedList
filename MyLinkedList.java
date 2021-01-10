@@ -116,5 +116,51 @@ public void add(int index, String value){
      }
      return result;
  }
+   public String remove(int index){
+     if(index < 0 || index >= size || size == 0){
+       throw new IndexOutOfBoundsException("no such element");
+     }
+     if(size == 1){
+       Node holder = start;
+       start = null;
+       end = null;
+       size--;
+       return holder.getData();
+     }else{
+       if(index == 0){
+         Node holder = start;
+         start = start.getNext();
+         start.getPrev().setNext(null);
+         start.setPrev(null);
+         size--;
+         return holder.getData();
+       }else{
+         if(index == size-1){
+           Node holder = end;
+           end = end.getPrev();
+           end.getNext().setPrev(null);
+           end.setNext(null);
+           size--;
+           return holder.getData();
+         }else{
+           Node counter = start;
+           for(int i = 0; i < size; i++){
+             if(index == i){
+               Node holder = counter;
+               counter.getPrev().setNext(counter.getNext());
+               counter.getNext().setPrev(counter.getPrev());
+               counter.setNext(null);
+               counter.setPrev(null);
+               size--;
+               return holder.getData();
+             }else{
+               counter = counter.getNext();
+             }
+           }
+         }
+       }
+     }
+     return "Something went wrong...";
+   }
 //  //Any helper method that returns a Node object MUST BE PRIVATE!
 }
