@@ -3,6 +3,8 @@ public class MyLinkedList{
  private Node start,end;
  public MyLinkedList(){
    size = 0;
+   start = null;
+   end = null;
  }
  public int size(){
    return size;
@@ -90,6 +92,9 @@ public void add(int index, String value){
  }
  public String toString(){
    String result = "[";
+   if(size == 0){
+     return "[]";
+   }
    Node counter = start;
    for(int i = 0; i < size; i++){
      if(counter != end){
@@ -103,6 +108,9 @@ public void add(int index, String value){
    return result;
  }
    public String toStringReversed(){
+     if(size == 0){
+       return "[]";
+     }
      String result = "[";
      Node counter = end;
      for(int i = size-1; i >= 0; i--){
@@ -149,8 +157,8 @@ public void add(int index, String value){
                Node holder = counter;
                counter.getPrev().setNext(counter.getNext());
                counter.getNext().setPrev(counter.getPrev());
-               counter.setNext(null);
-               counter.setPrev(null);
+               // counter.setNext(null);
+               // counter.setPrev(null);
                size--;
                return holder.getData();
              }else{
@@ -162,5 +170,30 @@ public void add(int index, String value){
      }
      return "Something went wrong...";
    }
+     public void empty(){
+       size = 0;
+       end = null;
+       start = null;
+     }
+     private void link(Node other){
+       start.setPrev(other);
+       other.setNext(start);
+       start = other;
+     }
+     public void extend(MyLinkedList other){
+       if(other.size() != 0){
+         if(size != 0){
+           size += other.size();
+           other.link(end);
+           end = other.end;
+           other.empty();
+         }else{
+           size = other.size();
+           start = other.start;
+           end = other.end;
+           other.empty();
+         }
+       }
+     }
 //  //Any helper method that returns a Node object MUST BE PRIVATE!
 }
