@@ -21,6 +21,9 @@ public class MyLinkedList{
      return true;
   }
 public void add(int index, String value){
+  if(index < 0 || index > size){
+    throw new IndexOutOfBoundsException("no such element");
+  }
   Node newNode = new Node(value);
   if(size == 0){
     start = end = newNode;
@@ -55,6 +58,9 @@ public void add(int index, String value){
   }
 }
  public String get(int index){
+   if(index < 0 || index >= size){
+     throw new IndexOutOfBoundsException("no such element");
+   }
    Node counter = start;
    for(int i = 0; i < size; i++){
      if(i == index){
@@ -67,6 +73,9 @@ public void add(int index, String value){
   return "throw here jordan";
 }
  public String set(int index, String value){
+   if(index < 0 || index >= size){
+     throw new IndexOutOfBoundsException("no such element");
+   }
    Node counter = start;
    for(int i = 0; i < size; i++){
      if(i == index){
